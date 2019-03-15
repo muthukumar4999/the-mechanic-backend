@@ -1,2 +1,2 @@
 release: bash ./release.sh
-web: gunicorn market_backend.wsgi -t 45
+web: gunicorn the_mechanic_backend.wsgi -t 45
