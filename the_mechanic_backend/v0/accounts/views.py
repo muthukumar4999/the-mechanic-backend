@@ -1,4 +1,3 @@
-from rest_framework import views
 from rest_framework.permissions import AllowAny
 
 from the_mechanic_backend.apps.accounts.models import AuthUser

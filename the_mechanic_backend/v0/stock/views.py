@@ -94,15 +94,24 @@ class SpareList(CustomBaseClass):
         """
         return a list of spares for particular model
         :param request:
+        @query_param
+        search=search_text - to search the spares
+        out_of_stock=true - to get only out of stock
+        Note: we can use both at same time :)
         :param brand_model_id:
         :return:
         """
         try:
-            search = request.GET.get('search', '')
+            search = request.GET.get('search')
+            out_of_stock = request.GET.get('out_of_stock')
             if search:
                 spare = self.get_filter_objects(Spare, brand_model=brand_model_id, spare_name__icontains=search)
             else:
                 spare = self.get_filter_objects(Spare, brand_model=brand_model_id)
+
+            if out_of_stock:
+                spare = spare.filter(quantity=0)
+
             serializer = serializers.SpareSerializer(spare, many=True)
             return Utils.dispatch_success(request, serializer.data)
         except Exception as e:

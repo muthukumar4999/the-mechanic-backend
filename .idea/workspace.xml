@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="779d07b3-d93c-4f20-83bc-2b69978fb399" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/env_dir/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/env_dir/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/env_dir/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/env_dir/dev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,83 +13,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/permissions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/the_mechanic_backend/env_dir/base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py">
+        <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="172">
+              <caret line="99" column="42" selection-start-line="99" selection-start-column="42" selection-end-line="99" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/stock/admin.py">
+        <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/accounts/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="14" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="335">
+              <caret line="29" column="12" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -144,13 +71,13 @@
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/apps.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/urls.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/utils.py" />
-        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/models.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py" />
-        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/permissions.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/env_dir/base.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py" />
+        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py" />
+        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" />
       </list>
     </option>
   </component>
@@ -270,17 +197,18 @@
       <option name="presentableId" value="Default" />
       <updated>1552645709053</updated>
       <workItem from="1552645711903" duration="7001000" />
-      <workItem from="1552671058959" duration="15469000" />
+      <workItem from="1552671058959" duration="16399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22470000" />
+    <option name="totallyTimeSpent" value="23400000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="25" width="1301" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.225498" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.225498" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -294,7 +222,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27850163" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27850163" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -456,13 +384,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="45" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -508,26 +429,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1404">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#3#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
@@ -540,10 +441,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+        <state>
+          <caret selection-end-line="34" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -558,10 +459,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/env_dir/base.py">
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
+        <state relative-caret-position="198">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -585,13 +489,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py">
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/env_dir/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="264">
+          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#44#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="29" column="12" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="99" column="42" selection-start-line="99" selection-start-column="42" selection-end-line="99" selection-end-column="42" />
         </state>
       </provider>
     </entry>
