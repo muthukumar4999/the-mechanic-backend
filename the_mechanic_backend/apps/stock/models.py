@@ -7,6 +7,9 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
+
 
 class BrandModel(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
@@ -14,6 +17,9 @@ class BrandModel(models.Model):
 
     def __str__(self):
         return self.model_name
+
+    class Meta:
+        ordering = ['model_name']
 
 
 class Spare(models.Model):
@@ -34,3 +40,6 @@ class Spare(models.Model):
 
     def __str__(self):
         return self.spare_name
+
+    class Meta:
+        ordering = ['spare_name']

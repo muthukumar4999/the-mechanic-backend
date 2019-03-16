@@ -97,7 +97,7 @@ class SpareList(CustomBaseClass):
         @query_param
         search=search_text - to search the spares
         out_of_stock=true - to get only out of stock
-        Note: we can use both at same time :)
+        Note - we can use both at same time :)
         :param brand_model_id:
         :return:
         """

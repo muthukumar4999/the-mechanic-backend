@@ -10,3 +10,4 @@ class AuthUserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(AuthUser, AuthUserAdmin)
+admin.site.site_url = 'http://the-mechanic-backend.herokuapp.com/api/v0/docs/'
