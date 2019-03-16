@@ -29,7 +29,10 @@ class BrandModelList(views.APIView):
     def get(self, request, brand_id):
         try:
             search = request.GET.get('search', '')
-            brands = BrandModel.objects.filter(brand=brand_id)
+            if search:
+                brands = BrandModel.objects.filter(brand=brand_id, model_name__icontains=search)
+            else:
+                brands = BrandModel.objects.filter(brand=brand_id)
             serializer = serializers.BrandModelSerializer(brands, many=True)
             return Utils.dispatch_success(request, serializer.data)
         except Exception as e:
