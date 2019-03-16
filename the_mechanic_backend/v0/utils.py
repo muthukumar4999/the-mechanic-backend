@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.core.validators import validate_email
 from django.http import HttpResponse
 from django.template.loader import get_template
-from rest_framework import status
+from rest_framework import status, views
 from rest_framework.response import Response
 from xhtml2pdf import pisa
 from django.utils.crypto import get_random_string
@@ -165,3 +165,23 @@ class Utils(object):
             content = "attachment; filename={}.{}".format(filename, extension)
             response['Content-Disposition'] = content
             return response
+
+class CustomBaseClass(views.APIView):
+    def get_object(self, model, id) -> object:
+        try:
+            return model.objects.get(id=id)
+        except Exception as e:
+            return False
+
+    def get_all_objects(self, model) -> object:
+        return model.objects.all()
+
+    def get_filter_objects(self, model, **kwargs):
+        return model.objects.filter(**kwargs)
+
+    def object_not_found(self, request):
+        return Utils.dispatch_failure(request, 'OBJECT_RESOURCE_NOT_FOUND')
+
+    def internal_server_error(self, request, error):
+        error_message = {'error': str(error)}
+        return Utils.dispatch_failure(request, 'INTERNAL_SERVER_ERROR', error_message)

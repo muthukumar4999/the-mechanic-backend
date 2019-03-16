@@ -1,6 +1,9 @@
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from rest_framework import serializers
 
-from the_mechanic_backend.apps.stock.models import Brand, BrandModel
+from the_mechanic_backend.apps.stock.models import Brand, BrandModel, Spare
 
 
 class BrandSerializer(serializers.ModelSerializer):
@@ -29,6 +32,33 @@ class AddBrandModelSerializer(serializers.ModelSerializer):
         model = BrandModel
         fields = ('__all__')
 
+
+class SpareSerializer(serializers.ModelSerializer):
+    brand_name = serializers.SerializerMethodField()
+    full_vehicle_name = serializers.SerializerMethodField()
+    model_name = serializers.SerializerMethodField()
+
+    def get_full_vehicle_name(self, obj):
+        return f'{obj.brand.name} {obj.brand_model.model_name}'
+
+    def get_brand_name(self, obj):
+        return obj.brand.name
+
+    def get_model_name(self, obj):
+        return obj.brand_model.model_name
+
+    class Meta:
+        model = Spare
+        fields = ('brand_name', 'full_vehicle_name', 'model_name', 'spare_name', 'quantity',
+                  'per_price', 'suppliers', 'quality_class',)
+
+
+class AddSpareSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Spare
+        fields = ('__all__')
+
+
 #
 #
 # class CreateFileUploadSerializer(serializers.ModelSerializer):
@@ -54,38 +84,37 @@ class AddBrandModelSerializer(serializers.ModelSerializer):
 #         fields = ('id', 'username', 'user_type', 'phone_number')
 #
 #
-# class LoginSerializer(serializers.Serializer):
-#     username = serializers.CharField(required=True)
-#     password = serializers.CharField(required=True)
-#
-#     def validate(self, attrs):
-#         username = attrs.get('username')
-#         password = attrs.get('password')
-#
-#         user = authenticate(request=self.context.get('request'), username=username, password=password)
-#         if not user:
-#             msg = 'Unable to login with required credentials'
-#             raise ValidationError(msg)
-#         return user
-#
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField(required=True)
+    password = serializers.CharField(required=True)
+
+    def validate(self, attrs):
+        username = attrs.get('username')
+        password = attrs.get('password')
+
+        user = authenticate(request=self.context.get('request'), username=username, password=password)
+        if not user:
+            msg = 'Unable to login with required credentials'
+            raise ValidationError(msg)
+        return user
+
 #     class Meta:
 #         model = User
 #         fields = ('username', 'password')
 #
 #
 # class UserSerializer(serializers.ModelSerializer):
-#     profile_picture = GetFileSerializer(required=False)
 #
 #     class Meta:
 #         model = User
-#         fields = ('id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'profile_picture')
+#         fields = ('id', 'username', 'first_name', 'last_name',)
 #
 #
 # class AuthUserSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = AuthUser
 #         fields = ('token',)
-#
+
 #
 # class CategorySerializer(serializers.ModelSerializer):
 #     sub_category_count = serializers.SerializerMethodField()

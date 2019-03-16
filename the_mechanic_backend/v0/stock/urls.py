@@ -6,7 +6,11 @@ urlpatterns = [
 
     path('brand/', views.BrandList.as_view(), name='brand-list'),
 
-    path('brand/<slug:brand_id>/model/', views.BrandModelList.as_view(), name='brand-model-list'),
+    path('brand/<int:brand_id>/model/', views.BrandModelList.as_view(), name='brand-model-list'),
+
+    path('model/<int:brand_model_id>/spare/', views.SpareList.as_view(), name='model-spare-list'),
+
+    path('spare/<int:spare_id>/', views.SpareDetails.as_view(), name='model-spare-details'),
 
     # path('users/', views.UserList.as_view(), name='user-list'),
     #

@@ -43,6 +43,7 @@ SECRET_KEY = '-vfiim&d5p=i1lyj)7o2+a57k(cz0&t+zqh%plnw5vlza$1q+&'
 
 PERSONAL_APPS = [
     'the_mechanic_backend',
+    'the_mechanic_backend.apps.accounts',
     'the_mechanic_backend.apps.stock',
     'the_mechanic_backend.v0',
 ]
@@ -82,18 +83,21 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
         # Custom authentication permission can be added here
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
         'rest_framework.authentication.SessionAuthentication',
+        'the_mechanic_backend.v0.permissions.CustomAuthentication'
     ],
 }
 
 ROOT_URLCONF = 'the_mechanic_backend.urls'
 
 # AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = ('the_mechanic_backend.v0.permissions.CustomAuthentication',)
+
 
 CORS_ALLOW_HEADERS = default_headers + (
     'Content-Disposition',

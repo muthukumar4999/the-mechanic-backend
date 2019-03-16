@@ -16,13 +16,13 @@ class BrandModel(models.Model):
         return self.model_name
 
 
-class Spares(models.Model):
+class Spare(models.Model):
     FIRST = 'FIRST'
     SECOND = 'SECOND'
     THIRD = 'THIRD'
     CLASS = ((FIRST, FIRST),
              (SECOND, SECOND),
-             (SECOND, SECOND))
+             (THIRD, THIRD))
 
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     brand_model = models.ForeignKey(BrandModel, on_delete=models.CASCADE)
