@@ -33,6 +33,7 @@ class Spare(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     brand_model = models.ForeignKey(BrandModel, on_delete=models.CASCADE)
     spare_name = models.CharField(max_length=200)
+    spare_id = models.CharField(max_length=200)
     quantity = models.IntegerField()
     per_price = models.DecimalField(max_digits=10, decimal_places=2)
     suppliers = models.CharField(max_length=200)

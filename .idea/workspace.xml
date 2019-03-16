@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="779d07b3-d93c-4f20-83bc-2b69978fb399" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +17,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="133" column="12" lean-forward="true" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
+            <state relative-caret-position="-1222">
+              <caret line="132" column="9" lean-forward="true" selection-start-line="131" selection-start-column="34" selection-end-line="132" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -30,7 +44,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/accounts/management/commands/test_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
+            <state relative-caret-position="142">
               <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
@@ -39,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/env_dir/base.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-445">
@@ -63,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+            <state relative-caret-position="144">
+              <caret line="10" column="58" lean-forward="true" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -76,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="77" />
+              <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -87,8 +101,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="15" column="14" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="14" />
+            <state relative-caret-position="-7">
+              <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -136,7 +150,6 @@
         <option value="$PROJECT_DIR$/the_mechanic_backend/apps/stock/admin.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/env_dir/dev.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/urls.py" />
-        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/urls.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/apps.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/urls.py" />
@@ -147,10 +160,11 @@
         <option value="$PROJECT_DIR$/the_mechanic_backend/env_dir/base.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py" />
-        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" />
-        <option value="$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py" />
         <option value="$PROJECT_DIR$/temp.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/management/commands/test_data.py" />
+        <option value="$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py" />
+        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py" />
+        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" />
       </list>
     </option>
   </component>
@@ -273,18 +287,18 @@
       <workItem from="1552645711903" duration="7001000" />
       <workItem from="1552671058959" duration="17251000" />
       <workItem from="1552726843270" duration="8000" />
-      <workItem from="1552739694052" duration="5107000" />
+      <workItem from="1552739694052" duration="6414000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29367000" />
+    <option name="totallyTimeSpent" value="30674000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="25" width="1301" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23346613" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23346613" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -298,7 +312,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.47394136" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23941368" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -443,16 +457,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -555,40 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="133" column="12" lean-forward="true" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="77" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/temp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -601,10 +571,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/accounts/management/commands/test_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
+        <state relative-caret-position="142">
           <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="10" column="58" lean-forward="true" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -613,6 +620,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-445">
           <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1222">
+          <caret line="132" column="9" lean-forward="true" selection-start-line="131" selection-start-column="34" selection-end-line="132" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

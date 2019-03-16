@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from the_mechanic_backend.apps.stock.models import Brand, BrandModel, Spare
 from the_mechanic_backend.v0.stock import serializers
 from the_mechanic_backend.v0.utils import Utils, CustomBaseClass
@@ -104,10 +106,10 @@ class SpareList(CustomBaseClass):
         try:
             search = request.GET.get('search')
             out_of_stock = request.GET.get('out_of_stock')
+            spare = self.get_filter_objects(Spare, brand_model=brand_model_id)
+
             if search:
-                spare = self.get_filter_objects(Spare, brand_model=brand_model_id, spare_name__icontains=search)
-            else:
-                spare = self.get_filter_objects(Spare, brand_model=brand_model_id)
+                spare = spare.filter(Q(spare_id__icontains=search) | Q(spare_name__icontains=search))
 
             if out_of_stock:
                 spare = spare.filter(quantity=0)
@@ -123,6 +125,7 @@ class SpareList(CustomBaseClass):
         :param request:
         {
             "spare_name": "SIde Mirror",
+            "spare_id": #34545435,
             "quantity": 10,
             "per_price": "500",
             "suppliers": "Glass India",
@@ -175,6 +178,7 @@ class SpareDetails(CustomBaseClass):
         # partial fields are also acceptable
         {
             "spare_name": "SIde Mirror",
+            "spare_id": #34545435,
             "quantity": 10,
             "per_price": "500",
             "suppliers": "Glass India",
