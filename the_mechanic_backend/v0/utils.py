@@ -166,6 +166,7 @@ class Utils(object):
             response['Content-Disposition'] = content
             return response
 
+
 class CustomBaseClass(views.APIView):
     def get_object(self, model, id) -> object:
         try:
@@ -185,3 +186,9 @@ class CustomBaseClass(views.APIView):
     def internal_server_error(self, request, error):
         error_message = {'error': str(error)}
         return Utils.dispatch_failure(request, 'INTERNAL_SERVER_ERROR', error_message)
+
+
+class AppUtils(object):
+
+    def get_vehicle_full_name(self, vehicle):
+        return f'{vehicle.vehicle_brand.name} {vehicle.vehicle_model.model_name}'

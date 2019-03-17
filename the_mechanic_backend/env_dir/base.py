@@ -45,6 +45,7 @@ PERSONAL_APPS = [
     'the_mechanic_backend',
     'the_mechanic_backend.apps.accounts',
     'the_mechanic_backend.apps.stock',
+    'the_mechanic_backend.apps.service',
     'the_mechanic_backend.v0',
 ]
 

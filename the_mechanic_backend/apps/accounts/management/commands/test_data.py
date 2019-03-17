@@ -1,5 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.utils import timezone
+
+from the_mechanic_backend.apps.service.models import ServiceType, Service, SubService, GeneralService
 from the_mechanic_backend.apps.stock.models import BrandModel, Brand
 
 
@@ -60,14 +62,48 @@ class Command(BaseCommand):
                        'RD350', 'RX 100', 'RX 100', 'RX 135', 'Saluto', 'SS 125', 'SZ', 'SZ-R', 'SZ-RR', 'SZ-S', 'SZX',
                        'YBR', 'YBR 125', 'YBX', 'YZF R15', 'Other'], 'Other': ['Rajdoot 350', 'Yezdi', 'Other']}
 
+    SERVICE_TYPE = [{'name': 'General Service', 'is_general': True, 'has_sub': False, 'subs': [],
+                     'general': ['Head Light', 'Danger Light', 'FR- Break Light', 'RR- Break Light',
+                                 'Battery', 'Horn', 'IND - Buzzer', 'Self start', 'Tank Bag',
+                                 'Mat', 'Indicator - Front', 'Indicator - Rear', 'Engine Oil',
+                                 'Fuel', 'Fork Oil', 'Forkoil Leak', 'Coneset', 'Stay Bush',
+                                 'Break Shoe - FR', 'Break Shoe - RR', 'Speedo Meter - Worm',
+                                 'Speedo Meter - Cable']},
+                    {'name': 'Repair Job', 'is_general': False, 'has_sub': False, 'subs': [], 'general': []},
+                    {'name': 'Premium Service', 'is_general': False, 'has_sub': False, 'subs': [], 'general': []},
+                    {'name': 'Water Service', 'is_general': False, 'has_sub': False, 'subs': [], 'general': []},
+                    {'name': 'Other Service', 'is_general': False, 'has_sub': True,
+                     'subs': ['Lath', 'Welding', 'Electrical', 'Fiber Moulding', 'S C / T B',
+                              'S/M Repair', 'Tyre'], 'general': []},
+                    ]
+
     def handle(self, *args, **kwargs):
+        self.add_vehicle_details()
+        self.add_service_type()
+
+    def add_vehicle_details(self):
         Brand.objects.all().delete()
-        for key,value in self.DATA.items():
+        for key, value in self.DATA.items():
             brand = Brand.objects.filter(name=key)
             if not brand:
                 brand = Brand(name=key)
                 brand.save()
             for item in value:
                 brand_model = BrandModel(brand=brand,
-                                         model_name = item)
+                                         model_name=item)
                 brand_model.save()
+
+    def add_service_type(self):
+        ServiceType.objects.all().delete()
+        GeneralService.objects.all().delete()
+        for item in self.SERVICE_TYPE:
+            service = ServiceType(service_name=item['name'],
+                                  is_general=item['is_general'],
+                                  has_sub=item['has_sub'])
+            service.save()
+            for sub in item['subs']:
+                SubService(service=service,
+                           sub_service_name=sub).save()
+
+            for check_list in item['general']:
+                GeneralService(check_list=check_list).save()

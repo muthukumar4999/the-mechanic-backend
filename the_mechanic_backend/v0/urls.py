@@ -8,5 +8,9 @@ schema_view = get_schema_view(title="Market App", renderer_classes=[SwaggerUIRen
 
 urlpatterns = [
     path('stock/', include(('the_mechanic_backend.v0.stock.urls', 'the_mechanic_backend.v0.stock'), namespace='stock')),
+    path('accounts/',
+         include(('the_mechanic_backend.v0.accounts.urls', 'the_mechanic_backend.v0.accounts'), namespace='accounts')),
+    path('service/',
+         include(('the_mechanic_backend.v0.service.urls', 'the_mechanic_backend.v0.service'), namespace='service')),
     path('docs/', schema_view, name='api-docs'),
 ]
