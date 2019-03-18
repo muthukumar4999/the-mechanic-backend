@@ -5,7 +5,7 @@ from rest_framework.permissions import AllowAny
 
 from the_mechanic_backend.apps.service.models import GeneralService, SubService, ServiceType, Service, Customer, \
     Vehicle, GeneralServiceTestResults, CustomerComplaints, SubServiceCost, SpareCost, ServiceCost
-from the_mechanic_backend.apps.stock.models import Spare
+from the_mechanic_backend.apps.stock.models import Spare, Brand, BrandModel
 from the_mechanic_backend.v0.service import serializers
 from the_mechanic_backend.v0.utils import Utils, CustomBaseClass
 
@@ -76,55 +76,12 @@ class ServiceList(CustomBaseClass):
 
             vehicle = Vehicle(
                 vehicle_number=vehicle_data['vehicle_number'],
-                vehicle_brand=vehicle_data['vehicle_brand'],
-                vehicle_model=vehicle_data['vehicle_model'],
+                vehicle_brand=self.get_object(Brand, vehicle_data['vehicle_brand']),
+                vehicle_model=self.get_object(BrandModel, vehicle_data['vehicle_model']),
                 vehicle_color=vehicle_data['vehicle_color'],
             )
 
             vehicle.save()
-
-            # data = {
-            #
-            #     "customer_data": {
-            #         "customer_name": "",
-            #         "customer_phone_number": "",
-            #         "customer_email": "",
-            #         "customer_address": "",
-            #         "customer_area": "",
-            #     },
-            #     "helmet": True,
-            #     "vehicle_data": {
-            #         "vehicle_number": "",
-            #         "vehicle_brand": "",
-            #         "vehicle_model": "",
-            #         "vehicle_color": "",
-            #         "vehicle_odo_reading": "",
-            #     },
-            #     "services": [{"id": 1, 'has_total': True, "total": 1000, },
-            #                  {"id": 2, 'has_total': True, "total": 500, },
-            #                  {"id": 3, 'has_total': True, "total": 1500, },
-            #                  {"id": 4, 'has_total': True, "total": 200, }, ],
-            #     "general_service_check_list": [{"id": 1, "status": "'WORKING"},
-            #                                    {"id": 2, "status": "'NOT_WORKING"},
-            #                                    {"id": 3, "status": "'REPLACE"}, ],
-            #     "customer_complaints": ["12345677", "23523523523", "23423423423"],
-            #     "spares": [{"id": 1, "quantity": 10, },
-            #                {"id": 2, "quantity": 1, },
-            #                {"id": 3, "quantity": 2, },
-            #                {"id": 4, "quantity": 3, }, ],
-            #     "outworks": [{"id": 1, "cost": 100},
-            #                  {"id": 2, "cost": 100},
-            #                  {"id": 3, "cost": 100}],
-            #     "labour_charge": 1000.00,
-            #     "labour": 1,
-            #     "delivery_date": "",
-            #     "is_pickup": True,
-            #     "pickup_details": {
-            #         "pickup_cost": 1200,
-            #         "pickup_address": "",
-            #         "delivery_address": ""
-            #     }
-            # }
 
             # Add basic service
             service = Service(
@@ -195,3 +152,46 @@ class ServiceList(CustomBaseClass):
 
         except Exception as e:
             return self.internal_server_error(request, e)
+
+# data = {
+#
+#                 "customer_data": {
+#                     "customer_name": "",
+#                     "customer_phone_number": "",
+#                     "customer_email": "",
+#                     "customer_address": "",
+#                     "customer_area": "",
+#                 },
+#                 "helmet": True,
+#                 "vehicle_data": {
+#                     "vehicle_number": "",
+#                     "vehicle_brand": "",
+#                     "vehicle_model": "",
+#                     "vehicle_color": "",
+#                     "vehicle_odo_reading": "",
+#                 },
+#                 "services": [{"id": 1, 'has_total': True, "total": 1000, },
+#                              {"id": 2, 'has_total': True, "total": 500, },
+#                              {"id": 3, 'has_total': True, "total": 1500, },
+#                              {"id": 4, 'has_total': True, "total": 200, }, ],
+#                 "general_service_check_list": [{"id": 1, "status": "'WORKING"},
+#                                                {"id": 2, "status": "'NOT_WORKING"},
+#                                                {"id": 3, "status": "'REPLACE"}, ],
+#                 "customer_complaints": ["12345677", "23523523523", "23423423423"],
+#                 "spares": [{"id": 1, "quantity": 10, },
+#                            {"id": 2, "quantity": 1, },
+#                            {"id": 3, "quantity": 2, },
+#                            {"id": 4, "quantity": 3, }, ],
+#                 "outworks": [{"id": 1, "cost": 100},
+#                              {"id": 2, "cost": 100},
+#                              {"id": 3, "cost": 100}],
+#                 "labour_charge": 1000.00,
+#                 "labour": 1,
+#                 "delivery_date": "",
+#                 "is_pickup": True,
+#                 "pickup_details": {
+#                     "pickup_cost": 1200,
+#                     "pickup_address": "",
+#                     "delivery_address": ""
+#                 }
+#             }
