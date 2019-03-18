@@ -72,7 +72,7 @@ class Service(models.Model):
     services = models.ManyToManyField(ServiceType)
 
     # status
-    status = models.CharField(max_length=20, choices=STATUS)
+    status = models.CharField(max_length=20, choices=STATUS, default=NEW)
 
     # spare
     spare_count = models.IntegerField()
@@ -101,9 +101,9 @@ class Service(models.Model):
 
 
 class GeneralServiceTestResults(models.Model):
-    WORKING = 'Working'
-    NOT_WORKING = 'Not_Working'
-    REPLACE = 'Replace'
+    WORKING = 'WORKING'
+    NOT_WORKING = 'NOT_WORKING'
+    REPLACE = 'REPLACE'
     STATUS = ((WORKING, WORKING),
               (NOT_WORKING, NOT_WORKING),
               (REPLACE, REPLACE))
@@ -126,6 +126,7 @@ class SubServiceCost(models.Model):
 
 class ServiceCost(models.Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    service_type = models.ForeignKey(ServiceType, on_delete=models.CASCADE)
     cost = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
@@ -139,3 +140,12 @@ class SpareCost(models.Model):
 
     def __str__(self):
         return f'{self.spare} - {self.quantity} - {self.per_price}'
+
+
+class CustomerComplaints(models.Model):
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    complain = models.TextField()
+    is_completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.service} - {self.complain}'
