@@ -7,6 +7,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.core.validators import validate_email
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.template.loader import get_template
 from rest_framework import status, views
 from rest_framework.response import Response
@@ -192,3 +193,10 @@ class AppUtils(object):
 
     def get_vehicle_full_name(self, vehicle):
         return f'{vehicle.vehicle_brand.name} {vehicle.vehicle_model.model_name}'
+
+
+def upload(request):
+    return render(request, 'upload.html')
+
+
+

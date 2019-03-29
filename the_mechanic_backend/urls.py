@@ -22,7 +22,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from the_mechanic_backend.v0.utils import upload
+
 urlpatterns = [
                   path('admin/', admin.site.urls),
+                  path('upload/', upload, name='upload-xls'),
                   path('api/v0/', include(('the_mechanic_backend.v0.urls', 'the_mechanic_backend.v0'), namespace='api-v0')),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

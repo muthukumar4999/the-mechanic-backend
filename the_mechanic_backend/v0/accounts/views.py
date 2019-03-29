@@ -1,7 +1,8 @@
+from django.http import HttpResponse
 from rest_framework.permissions import AllowAny
 
 from the_mechanic_backend.apps.accounts.models import AuthUser
-from the_mechanic_backend.v0.accounts import serializers
+from the_mechanic_backend.v0.accounts import serializers, forms
 from the_mechanic_backend.v0.utils import Utils, CustomBaseClass
 
 
@@ -32,3 +33,11 @@ class LoginView(CustomBaseClass):
             return Utils.dispatch_success(request, serializer.data)
         else:
             return Utils.dispatch_failure(request, "UNAUTHORIZED_ACCESS", validate_user.errors)
+
+
+class XlsFileUpload(CustomBaseClass):
+    def post(self, request, *args, **kwargs):
+        xls_file = forms.FileUploadForm(request.POST, request.FILES)
+        if xls_file.is_valid():
+            return HttpResponse("Success")
+        return HttpResponse("file Upload Failed")

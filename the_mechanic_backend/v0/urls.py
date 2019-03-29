@@ -1,4 +1,5 @@
 from django.urls import path, include
+from pip._vendor.distro import name
 from rest_framework.schemas import get_schema_view
 from rest_framework_swagger.renderers import SwaggerUIRenderer, OpenAPIRenderer
 

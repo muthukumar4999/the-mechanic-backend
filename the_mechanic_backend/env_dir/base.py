@@ -109,8 +109,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, '../../templates'), os.path.join(BASE_DIR, 'templates/../../../apidocs')]
-        ,
+        'DIRS': ['the_mechanic_backend/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,6 +121,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 LOGGING = {
     # Logger configuration dictionary
