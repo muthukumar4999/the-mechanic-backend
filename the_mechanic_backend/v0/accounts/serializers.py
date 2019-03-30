@@ -1,9 +1,8 @@
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from rest_framework import serializers
 
-from the_mechanic_backend.apps.accounts.models import AuthUser, Store
+from the_mechanic_backend.apps.accounts.models import AuthUser, Store, User
 
 
 class LoginSerializer(serializers.Serializer):
@@ -41,7 +40,23 @@ class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store
         fields = ('id', 'name', 'branch', 'type', 'address')
-#
+
+
+class CreateUserSerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        user = User(store=validated_data['store']
+                    , username=validated_data['username']
+                    , email=validated_data['email']
+                    , first_name=validated_data['first_name']
+                    , role=validated_data['role'])
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'first_name', 'email', 'store', 'role', 'password',)
+
 #
 # class CreateFileUploadSerializer(serializers.ModelSerializer):
 #     class Meta:

@@ -1,9 +1,8 @@
 from django.contrib.auth.backends import ModelBackend
-from django.contrib.auth.models import User
 from rest_framework import status, permissions
 from rest_framework.exceptions import APIException
 
-from the_mechanic_backend.apps.accounts.models import AuthUser
+from the_mechanic_backend.apps.accounts.models import AuthUser, User
 from the_mechanic_backend.validator.errorcodemapping import ErrorMessage
 from the_mechanic_backend.validator.errormapping import ErrorCode
 

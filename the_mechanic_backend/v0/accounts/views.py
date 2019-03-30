@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from rest_framework.permissions import AllowAny
 
-from the_mechanic_backend.apps.accounts.models import AuthUser, Store
+from the_mechanic_backend.apps.accounts.models import AuthUser, Store, User
 from the_mechanic_backend.v0.accounts import serializers, forms
 from the_mechanic_backend.v0.utils import Utils, CustomBaseClass
 
@@ -77,7 +77,55 @@ class StoreList(CustomBaseClass):
             if serializer.is_valid():
                 serializer.save()
                 return Utils.dispatch_success(request, serializer.data)
-            return Utils.dispatch_failure(request, 'VALIDATION_ERROR',serializer.errors)
+            return Utils.dispatch_failure(request, 'VALIDATION_ERROR', serializer.errors)
         except Exception as e:
             print(e)
+            return self.internal_server_error(request, e)
+
+
+class UserList(CustomBaseClass):
+    """
+    Lists all users
+    """
+
+    def get(self, request, *args, **kwargs):
+        """
+        Get the List of users
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        try:
+
+            queryset = self.get_all_objects(User)
+            print(queryset)
+            serializer = serializers.UserSerializer(queryset, many=True)
+            return Utils.dispatch_success(request, serializer.data)
+        except Exception as e:
+            return self.internal_server_error(request, e)
+
+    def post(self, request, *args, **kwargs):
+        """
+        Create New User
+        :param request:
+        {
+        "username" : "9876543210",
+        "first_name":"Team 1",
+        "email" : "team1@gmail.com",
+        "store" : 1,
+        "role":"ADMIN" # SUPER_ADMIN / ADMIN / EMPLOYEE,
+        "password": "Test@123"
+        }
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        try:
+            serializer = serializers.CreateUserSerializer(data=request.data, context={'request': request})
+            if serializer.is_valid():
+                serializer.save()
+                return Utils.dispatch_success(request, serializer.data)
+            return Utils.dispatch_failure(request, 'VALIDATION_ERROR', serializer.errors)
+        except Exception as e:
             return self.internal_server_error(request, e)

@@ -96,7 +96,7 @@ REST_FRAMEWORK = {
 
 ROOT_URLCONF = 'the_mechanic_backend.urls'
 
-# AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.User'
 AUTHENTICATION_BACKENDS = ('the_mechanic_backend.v0.permissions.CustomAuthentication',)
 
 

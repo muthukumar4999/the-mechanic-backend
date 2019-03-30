@@ -1,6 +1,6 @@
-from django.contrib.auth.models import User
 from django.db import models
 
+from the_mechanic_backend.apps.accounts.models import User
 from the_mechanic_backend.apps.stock.models import Spare
 
 

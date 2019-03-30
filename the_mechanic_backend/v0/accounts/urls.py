@@ -7,7 +7,9 @@ urlpatterns = [
 
     path('login/', views.LoginView.as_view(), name='login'),
 
-    url('store/', views.StoreList.as_view(), name='store-list'),
+    path('user/', views.UserList.as_view(), name='user-list'),
+
+    path('store/', views.StoreList.as_view(), name='store-list'),
 
     url('file-upload/', views.XlsFileUpload.as_view(), name='file_upload'),
 
