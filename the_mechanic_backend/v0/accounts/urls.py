@@ -1,13 +1,13 @@
 from django.conf.urls import url
 from django.urls import path
 
-
 from the_mechanic_backend.v0.accounts import views
 
 urlpatterns = [
 
-
     path('login/', views.LoginView.as_view(), name='login'),
+
+    url('store/', views.StoreList.as_view(), name='store-list'),
 
     url('file-upload/', views.XlsFileUpload.as_view(), name='file_upload'),
 

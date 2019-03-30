@@ -49,8 +49,7 @@ class SpareSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Spare
-        fields = (
-            'brand_name', 'full_vehicle_name', 'model_name', 'spare_name', 'spare_local_name', 'spare_id', 'quantity',
+        fields = ( 'id', 'brand_name', 'full_vehicle_name', 'model_name', 'spare_name', 'spare_local_name', 'spare_id', 'quantity',
             'per_price', 'suppliers', 'quality_class',)
 
 

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from rest_framework import serializers
 
-from the_mechanic_backend.apps.accounts.models import AuthUser
+from the_mechanic_backend.apps.accounts.models import AuthUser, Store
 
 
 class LoginSerializer(serializers.Serializer):
@@ -36,6 +36,11 @@ class AuthUserSerializer(serializers.ModelSerializer):
         model = AuthUser
         fields = ('token',)
 
+
+class StoreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Store
+        fields = ('id', 'name', 'branch', 'type', 'address')
 #
 #
 # class CreateFileUploadSerializer(serializers.ModelSerializer):
