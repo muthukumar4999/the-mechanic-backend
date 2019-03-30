@@ -44,12 +44,13 @@ class StoreSerializer(serializers.ModelSerializer):
 
 class CreateUserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
-        user = User(store=validated_data['store']
-                    , username=validated_data['username']
+        user = User(username=validated_data['username']
                     , email=validated_data['email']
                     , first_name=validated_data['first_name']
                     , role=validated_data['role'])
         user.set_password(validated_data['password'])
+        if validated_data.get('store'):
+            user.store = Store.objects.get(id = validated_data['store'])
         user.save()
         return user
 

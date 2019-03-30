@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="779d07b3-d93c-4f20-83bc-2b69978fb399" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/migrations/0002_store.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/service/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/service/migrations/0002_service_labour.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/service/migrations/0003_auto_20190318_1933.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/service/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/apps/service/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/migrations/0002_auto_20190315_1204.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/migrations/0003_auto_20190316_0640.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/migrations/0004_auto_20190316_0714.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/migrations/0005_auto_20190316_1751.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/migrations/0006_auto_20190317_1917.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/migrations/0007_auto_20190330_1904.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/env_dir/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/env_dir/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/permissions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,10 +60,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2">
+            <state relative-caret-position="12">
               <caret line="117" column="30" lean-forward="true" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="30" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
@@ -92,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="58" selection-start-line="58" selection-end-line="58" />
+            <state relative-caret-position="234">
+              <caret line="52" column="72" selection-start-line="52" selection-start-column="72" selection-end-line="52" selection-end-column="72" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
@@ -207,8 +187,8 @@
         <option value="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/forms.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/apps/accounts/admin.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/urls.py" />
-        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py" />
+        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py" />
       </list>
     </option>
   </component>
@@ -453,7 +433,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94794000" />
+    <option name="totallyTimeSpent" value="95351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="25" width="1301" height="743" extended-state="6" />
@@ -778,13 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/service/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -862,22 +835,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py">
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/apps.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="54">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
+        <state relative-caret-position="12">
           <caret line="117" column="30" lean-forward="true" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="30" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/accounts/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="52" column="72" selection-start-line="52" selection-start-column="72" selection-end-line="52" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
