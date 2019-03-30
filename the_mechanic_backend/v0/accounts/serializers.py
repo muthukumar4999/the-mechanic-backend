@@ -50,7 +50,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
                     , role=validated_data['role'])
         user.set_password(validated_data['password'])
         if validated_data.get('store'):
-            user.store = Store.objects.get(id = validated_data['store'])
+            user.store = validated_data['store']
         user.save()
         return user
 
