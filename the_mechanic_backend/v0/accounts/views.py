@@ -45,14 +45,32 @@ class XlsFileUpload(CustomBaseClass):
 
 class StoreList(CustomBaseClass):
     def get(self, request, *args, **kwargs):
+        """
+        Get the list of Store
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         try:
             st = self.get_all_objects(Store)
             serializer = serializers.StoreSerializer(st, many=True)
             return Utils.dispatch_success(request, serializer.data)
         except Exception as e:
-           return self.internal_server_error(request, e)
+            return self.internal_server_error(request, e)
 
     def post(self, request, *args, **kwargs):
+        """
+       Create a store
+       :param request:
+       {
+           "name": "Mr. Mechanic",
+           "branch": "Palavakkam",
+           "type": "SPARE", # SERVICE / SPARE
+           "address": "Palavakkam",
+       }
+        :return:
+        """
         try:
             print(request.data)
             serializer = serializers.StoreSerializer(data=request.data)
