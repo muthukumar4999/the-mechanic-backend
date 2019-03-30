@@ -29,7 +29,11 @@ class Spare(models.Model):
     spare_local_name = models.CharField(max_length=200, null=True)
     spare_id = models.CharField(max_length=200)
     quantity = models.IntegerField()
-    per_price = models.DecimalField(max_digits=10, decimal_places=2)
+    buying_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    wholesaler_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    mechanic_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    customer_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    mrp_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     suppliers = models.CharField(max_length=200)
     quality_class = models.CharField(max_length=100)
 
