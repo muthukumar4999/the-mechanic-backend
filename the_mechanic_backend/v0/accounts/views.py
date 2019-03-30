@@ -50,7 +50,7 @@ class StoreList(CustomBaseClass):
             serializer = serializers.StoreSerializer(st, many=True)
             return Utils.dispatch_success(request, serializer.data)
         except Exception as e:
-            self.internal_server_error(request, e)
+           return self.internal_server_error(request, e)
 
     def post(self, request, *args, **kwargs):
         try:
@@ -58,8 +58,8 @@ class StoreList(CustomBaseClass):
             serializer = serializers.StoreSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Utils.dispatch_success(request, serializer.data)
+                return Utils.dispatch_success(request, 'VALIDATION_ERROR', serializer.data)
             return Utils.dispatch_failure(request, serializer.errors)
         except Exception as e:
             print(e)
-            self.internal_server_error(request, e)
+            return self.internal_server_error(request, e)

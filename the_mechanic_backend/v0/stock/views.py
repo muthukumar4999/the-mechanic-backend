@@ -41,7 +41,7 @@ class BrandList(CustomBaseClass):
             if serializer.is_valid():
                 serializer.save()
                 return Utils.dispatch_success(request, serializer.data)
-            return Utils.dispatch_failure(request, serializer.errors)
+            return Utils.dispatch_failure(request, 'VALIDATION_ERROR', serializer.errors)
         except Exception as e:
             return self.internal_server_error(request, e)
 
@@ -86,7 +86,7 @@ class BrandModelList(CustomBaseClass):
             if serializer.is_valid():
                 serializer.save()
                 return Utils.dispatch_success(request, serializer.data)
-            return Utils.dispatch_failure(request, serializer.errors)
+            return Utils.dispatch_failure(request, 'VALIDATION_ERROR', serializer.errors)
         except Exception as e:
             return self.internal_server_error(request, e)
 
@@ -145,7 +145,7 @@ class SpareList(CustomBaseClass):
             if serializer.is_valid():
                 serializer.save()
                 return Utils.dispatch_success(request, serializer.data)
-            return Utils.dispatch_failure(request, serializer.errors)
+            return Utils.dispatch_failure(request, 'VALIDATION_ERROR', serializer.errors)
         except Exception as e:
             return self.internal_server_error(request, e)
 
@@ -195,7 +195,7 @@ class SpareDetails(CustomBaseClass):
             if serializer.is_valid():
                 serializer.save()
                 return Utils.dispatch_success(request, serializer.data)
-            return Utils.dispatch_failure(request, serializer.errors)
+            return Utils.dispatch_failure(request, 'VALIDATION_ERROR', serializer.errors)
         except Exception as e:
             return self.internal_server_error(request, e)
 
