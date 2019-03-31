@@ -1,6 +1,6 @@
 from django.db import models
 
-from the_mechanic_backend.apps.accounts.models import Store
+from the_mechanic_backend.apps.accounts.models import Store, User
 
 
 class Brand(models.Model):
@@ -53,6 +53,8 @@ class SpareCustomer(models.Model):
     phone_number = models.CharField(max_length=10)
     address = models.TextField()
 
+    def __str__(self):
+        return self.name
 
 class SpareOrder(models.Model):
     IN_SOURCE = 'IN_SOURCE'
@@ -64,7 +66,11 @@ class SpareOrder(models.Model):
     order_type = models.CharField(max_length=20, choices=TYPE)
     customer = models.ForeignKey(SpareCustomer, on_delete=models.CASCADE)
     total = models.DecimalField(max_digits=10, decimal_places=2)
+    sold_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     order_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.order_id
 
 
 class SpareSold(models.Model):
@@ -78,6 +84,7 @@ class SpareSold(models.Model):
                   (CUSTOMER, CUSTOMER))
     order = models.ForeignKey(SpareOrder, on_delete=models.CASCADE)
     spare = models.ForeignKey(Spare, on_delete=models.SET('deleted'))
+    spare_count = models.IntegerField()
     spare_name = models.CharField(max_length=100)
     spare_price = models.DecimalField(max_digits=10, decimal_places=2)
     spare_price_type = models.CharField(max_length=20, choices=price_type)

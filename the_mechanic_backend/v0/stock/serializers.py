@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from rest_framework import serializers
 
-from the_mechanic_backend.apps.stock.models import Brand, BrandModel, Spare
+from the_mechanic_backend.apps.stock.models import Brand, BrandModel, Spare, SpareCustomer, SpareOrder, SpareSold
 
 
 class BrandSerializer(serializers.ModelSerializer):
@@ -49,14 +49,34 @@ class SpareSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Spare
-        fields = ( 'id', 'brand_name', 'full_vehicle_name', 'model_name', 'spare_name', 'spare_local_name', 'spare_id', 'quantity',
-            'buying_price', 'wholesaler_price', 'mechanic_price', 'customer_price', 'mrp_price', 'suppliers', 'quality_class',)
+        fields = (
+            'id', 'brand_name', 'full_vehicle_name', 'model_name', 'spare_name', 'spare_local_name', 'spare_id',
+            'quantity',
+            'buying_price', 'wholesaler_price', 'mechanic_price', 'customer_price', 'mrp_price', 'suppliers',
+            'quality_class',)
 
 
 class AddSpareSerializer(serializers.ModelSerializer):
     class Meta:
         model = Spare
         fields = ('__all__')
+
+
+class SpareCustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SpareCustomer
+        fields = ('__all__')
+
+
+class SpareOrderHistorySerializer(serializers.ModelSerializer):
+    total_spare = serializers.SerializerMethodField()
+
+    def get_total_spare(self, obj):
+        return SpareSold.objects.filter(order=obj.id).count()
+
+    class Meta:
+        model = SpareOrder
+        fields = ('order_id', 'order_date', 'total', 'total_spare')
 
 
 #

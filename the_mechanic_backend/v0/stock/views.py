@@ -1,6 +1,11 @@
+import datetime
+
+from django.core.paginator import Paginator
+from django.db import transaction
 from django.db.models import Q
 
-from the_mechanic_backend.apps.stock.models import Brand, BrandModel, Spare
+from the_mechanic_backend.apps.accounts.models import Store
+from the_mechanic_backend.apps.stock.models import Brand, BrandModel, Spare, SpareCustomer, SpareOrder, SpareSold
 from the_mechanic_backend.v0.stock import serializers
 from the_mechanic_backend.v0.utils import Utils, CustomBaseClass
 
@@ -217,19 +222,34 @@ class SpareDetails(CustomBaseClass):
             return self.internal_server_error(request, e)
 
 
-class OrderSpareList(CustomBaseClass):
+class SpareOrderList(CustomBaseClass):
     def get(self, request, store_id, *args, **kwargs):
         """
         Returns the list of Spares based on Store
         :param request:
+        # params
+        start_date=2019-01-31&&
+        end_date=2019-12-31&&
+        page=1
         :param store_id:
         :param args:
         :param kwargs:
         :return:
         """
         try:
-            # todo: need to add a paginator list to return the history of orders based on store
-            pass
+            start_date = request.GET.get('start_date')
+            end_date = request.GET.get('end_date')
+            page = request.GET.get('page', 1)
+            qs = SpareOrder.objects.filter(store=store_id, order_date__range=[start_date, end_date])
+
+            paginator = Paginator(qs, per_page=10)
+            serializer = serializers.SpareOrderHistorySerializer(paginator.page(page), many=True)
+            response_data = {
+                "data": serializer.data,
+                "page": int(page),
+                "total_pages": paginator.num_pages
+            }
+            return Utils.dispatch_success(request, response_data)
         except Exception as e:
             return self.internal_server_error(request, e)
 
@@ -237,18 +257,88 @@ class OrderSpareList(CustomBaseClass):
         """
         Create a new Order
         :param request:
+        {
+                "customer_info": {
+                    "name": "Muthu Kumar",
+                    "email": "itmemk@gmail.com",
+                    "phone_number": "9876543210",
+                    "address": "ADDRESSS"
+                },
+                "order_type": "IN_SOURCE / OUT_SOURCE",
+                "spares": [
+                    {
+                        "spare_id": 1,
+                        "spare_price_type": 'MRP / MECHANIC / WHOLESALER / CUSTOMER',
+                        "spare_count": 2
+                    },
+                    {
+                        "spare_id": 1,
+                        "spare_price_type": 'MRP / MECHANIC / WHOLESALER / CUSTOMER',
+                        "spare_count": 2
+                    },
+                    {
+                        "spare_id": 1,
+                        "spare_price_type": 'MRP / MECHANIC / WHOLESALER / CUSTOMER',
+                        "spare_count": 2
+                    }
+                ]
+
+            }
         :param store_id:
         :param args:
         :param kwargs:
         :return:
         """
         try:
-            temp_data = {
-                "customer_info": {
-                    "name": "Muthu Kumar",
-                    "email": "itmemk@gmail.com",
-                }
-            }
-            pass
+            data = request.data
+
+            try:
+                customer = SpareCustomer.objects.get(phone_number=data['customer_info']['phone_number'])
+            except SpareCustomer.DoesNotExist:
+                customer_serializer = serializers.SpareCustomerSerializer(data=data['customer_info'])
+                if customer_serializer.is_valid():
+                    customer_serializer.save()
+                else:
+                    return Utils.dispatch_failure(request, "VALIDATION_ERROR", customer_serializer.errors)
+                customer = SpareCustomer.objects.get(customer_serializer.data['id'])
+
+            today = datetime.date.today()
+            today_order_count = SpareOrder.objects.filter(order_date__year=today.year,
+                                                          order_date__month=today.month).count()
+
+            order_id = 'SPOR{}{:05d}'.format(today.strftime("%Y%m"), today_order_count + 1)
+            with transaction.atomic():
+                print(self.get_object(Store, store_id))
+                order = SpareOrder(order_id=order_id,
+                                   store=self.get_object(Store, store_id),
+                                   order_type=data['order_type'],
+                                   customer=customer,
+                                   total=0.0,
+                                   sold_by=request.user)
+                order.save()
+                total = 0.0
+                spares_to_be_created = []
+                for _spare in data['spares']:
+                    spare = self.get_object(Spare, _spare['spare_id'])
+                    price_map = {
+                        'MRP': spare.mrp_price,
+                        'MECHANIC': spare.mechanic_price,
+                        'WHOLESALER': spare.wholesaler_price,
+                        'CUSTOMER': spare.customer_price,
+                    }
+                    sold_spare = SpareSold(order=order,
+                                           spare=spare,
+                                           spare_count=_spare['spare_count'],
+                                           spare_name=spare.spare_name,
+                                           spare_price=price_map[_spare['spare_price_type']],
+                                           spare_price_type=_spare['spare_price_type'])
+                    spares_to_be_created.append(sold_spare)
+                    total = total + float(sold_spare.spare_count * sold_spare.spare_price)
+                    spare.quantity = spare.quantity - sold_spare.spare_count
+                    spare.save()
+                SpareSold.objects.bulk_create(spares_to_be_created)
+                order.total = total
+                order.save()
+                return Utils.dispatch_success(request, {'order_id': order.id})
         except Exception as e:
             return self.internal_server_error(request, e)
