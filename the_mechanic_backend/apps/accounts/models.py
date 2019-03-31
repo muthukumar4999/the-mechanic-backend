@@ -12,16 +12,19 @@ class Store(models.Model):
     type = models.CharField(max_length=200, choices=STORE_TYPE)
     address = models.TextField()
 
+    def __str__(self):
+        return f'{self.name} - {self.branch}'
+
 
 class User(AbstractUser):
     SUPER_ADMIN = 'SUPER_ADMIN'
     ADMIN = 'ADMIN'
     EMPLOYEE = 'EMPLOYEE'
-    ROLES = ((SUPER_ADMIN,SUPER_ADMIN),
-             (ADMIN,ADMIN),
-             (EMPLOYEE,EMPLOYEE))
-    role = models.CharField(max_length=20,choices=ROLES, null=True, blank=True)
-    store = models.ForeignKey(Store,on_delete=models.CASCADE, null=True, blank=True)
+    ROLES = ((SUPER_ADMIN, SUPER_ADMIN),
+             (ADMIN, ADMIN),
+             (EMPLOYEE, EMPLOYEE))
+    role = models.CharField(max_length=20, choices=ROLES, null=True, blank=True)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE, null=True, blank=True)
 
 
 class AuthUser(models.Model):

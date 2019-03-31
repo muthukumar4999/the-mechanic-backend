@@ -1,5 +1,7 @@
 from django.db import models
 
+from the_mechanic_backend.apps.accounts.models import Store
+
 
 class Brand(models.Model):
     name = models.CharField(max_length=200)
@@ -23,6 +25,7 @@ class BrandModel(models.Model):
 
 
 class Spare(models.Model):
+    store = models.ForeignKey(Store, on_delete=models.CASCADE, null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     brand_model = models.ForeignKey(BrandModel, on_delete=models.CASCADE)
     spare_name = models.CharField(max_length=200)

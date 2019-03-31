@@ -92,7 +92,7 @@ class BrandModelList(CustomBaseClass):
 
 
 class SpareList(CustomBaseClass):
-    def get(self, request, brand_model_id):
+    def get(self, request, store_id, brand_model_id):
         """
         return a list of spares for particular model
         :param request:
@@ -100,13 +100,14 @@ class SpareList(CustomBaseClass):
         search=search_text - to search the spares
         out_of_stock=true - to get only out of stock
         Note - we can use both at same time :)
+        :param store_id
         :param brand_model_id:
         :return:
         """
         try:
             search = request.GET.get('search')
             out_of_stock = request.GET.get('out_of_stock')
-            spare = self.get_filter_objects(Spare, brand_model=brand_model_id)
+            spare = self.get_filter_objects(Spare, brand_model=brand_model_id, store=store_id)
 
             if search:
                 spare = spare.filter(Q(spare_id__icontains=search) | Q(spare_name__icontains=search))

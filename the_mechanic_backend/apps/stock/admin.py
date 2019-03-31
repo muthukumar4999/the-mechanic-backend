@@ -16,7 +16,7 @@ class BrandModelAdmin(admin.ModelAdmin):
 
 class SpareAdmin(admin.ModelAdmin):
     model = Spare
-    list_display = ['brand', 'brand_model', 'spare_name', 'spare_local_name', 'quantity', 'buying_price', 'mrp_price']
+    list_display = ['store', 'brand', 'brand_model', 'spare_name', 'spare_local_name', 'quantity', 'buying_price', 'mrp_price']
 
 
 admin.site.register(Brand, BrandAdmin)

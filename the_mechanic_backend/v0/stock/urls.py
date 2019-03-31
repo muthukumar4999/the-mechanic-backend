@@ -8,7 +8,7 @@ urlpatterns = [
 
     path('brand/<int:brand_id>/model/', views.BrandModelList.as_view(), name='brand-model-list'),
 
-    path('model/<int:brand_model_id>/spare/', views.SpareList.as_view(), name='model-spare-list'),
+    path('<int:store>/model/<int:brand_model_id>/spare/', views.SpareList.as_view(), name='model-spare-list'),
 
     path('spare/<int:spare_id>/', views.SpareDetails.as_view(), name='model-spare-details'),
 
