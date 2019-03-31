@@ -30,7 +30,12 @@ class LoginView(CustomBaseClass):
             new_session.token = Utils.generate_token()
             new_session.save()
             serializer = serializers.AuthUserSerializer(new_session)
-            return Utils.dispatch_success(request, serializer.data)
+            response_data = {}
+            response_data['auth_info'] = serializer.data
+            response_data['user_info'] = serializers.CreateUserSerializer(user).data
+            if user.store:
+                response_data['store_info'] = serializers.StoreSerializer(user.store).data
+            return Utils.dispatch_success(request, response_data)
         else:
             return Utils.dispatch_failure(request, "UNAUTHORIZED_ACCESS", validate_user.errors)
 
