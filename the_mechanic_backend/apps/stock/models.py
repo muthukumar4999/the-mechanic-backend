@@ -45,3 +45,39 @@ class Spare(models.Model):
 
     class Meta:
         ordering = ['spare_name']
+
+
+class SpareCustomer(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=10)
+    address = models.TextField()
+
+
+class SpareOrder(models.Model):
+    IN_SOURCE = 'IN_SOURCE'
+    OUT_SOURCE = 'OUT_SOURCE'
+    TYPE = ((IN_SOURCE, IN_SOURCE),
+            (OUT_SOURCE, OUT_SOURCE))
+    order_id = models.CharField(max_length=20)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE)
+    order_type = models.CharField(max_length=20, choices=TYPE)
+    customer = models.ForeignKey(SpareCustomer, on_delete=models.CASCADE)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+    order_date = models.DateTimeField(auto_now=True)
+
+
+class SpareSold(models.Model):
+    MRP = 'MRP'
+    MECHANIC = 'MECHANIC'
+    WHOLESALER = 'WHOLESALER'
+    CUSTOMER = 'CUSTOMER'
+    price_type = ((MRP, MRP),
+                  (MECHANIC, MECHANIC),
+                  (WHOLESALER, WHOLESALER),
+                  (CUSTOMER, CUSTOMER))
+    order = models.ForeignKey(SpareOrder, on_delete=models.CASCADE)
+    spare = models.ForeignKey(Spare, on_delete=models.SET('deleted'))
+    spare_name = models.CharField(max_length=100)
+    spare_price = models.DecimalField(max_digits=10, decimal_places=2)
+    spare_price_type = models.CharField(max_length=20, choices=price_type)

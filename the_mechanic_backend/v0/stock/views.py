@@ -215,3 +215,40 @@ class SpareDetails(CustomBaseClass):
             return Utils.dispatch_success(request, 'SUCCESS')
         except Exception as e:
             return self.internal_server_error(request, e)
+
+
+class OrderSpareList(CustomBaseClass):
+    def get(self, request, store_id, *args, **kwargs):
+        """
+        Returns the list of Spares based on Store
+        :param request:
+        :param store_id:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        try:
+            # todo: need to add a paginator list to return the history of orders based on store
+            pass
+        except Exception as e:
+            return self.internal_server_error(request, e)
+
+    def post(self, request, store_id, *args, **kwargs):
+        """
+        Create a new Order
+        :param request:
+        :param store_id:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        try:
+            temp_data = {
+                "customer_info": {
+                    "name": "Muthu Kumar",
+                    "email": "itmemk@gmail.com",
+                }
+            }
+            pass
+        except Exception as e:
+            return self.internal_server_error(request, e)
