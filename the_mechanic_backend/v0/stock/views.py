@@ -300,7 +300,7 @@ class SpareOrderList(CustomBaseClass):
                     customer_serializer.save()
                 else:
                     return Utils.dispatch_failure(request, "VALIDATION_ERROR", customer_serializer.errors)
-                customer = SpareCustomer.objects.get(customer_serializer.data['id'])
+                customer = SpareCustomer.objects.get(id=customer_serializer.data['id'])
 
             today = datetime.date.today()
             today_order_count = SpareOrder.objects.filter(order_date__year=today.year,
