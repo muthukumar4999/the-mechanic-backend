@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="779d07b3-d93c-4f20-83bc-2b69978fb399" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/env_dir/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/env_dir/dev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +28,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="336">
@@ -57,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="247" column="54" selection-start-line="247" selection-start-column="47" selection-end-line="247" selection-end-column="54" />
+            <state relative-caret-position="168">
+              <caret line="364" column="84" selection-start-line="364" selection-start-column="84" selection-end-line="364" selection-end-column="84" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -166,9 +161,9 @@
         <option value="$PROJECT_DIR$/the_mechanic_backend/apps/stock/models.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/utils.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/urls.py" />
-        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/templates/spare_invoice.html" />
         <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/serializers.py" />
+        <option value="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" />
       </list>
     </option>
   </component>
@@ -436,7 +431,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127521000" />
+    <option name="totallyTimeSpent" value="127944000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="25" width="1301" height="743" extended-state="6" />
@@ -726,16 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/stock/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
@@ -831,16 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="247" column="54" selection-start-line="247" selection-start-column="47" selection-end-line="247" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/permissions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -867,6 +842,26 @@
           <caret line="94" column="114" selection-start-line="94" selection-start-column="114" selection-end-line="94" selection-end-column="114" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/apps/stock/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="364" column="84" selection-start-line="364" selection-start-column="84" selection-end-line="364" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
