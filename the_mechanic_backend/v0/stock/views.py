@@ -125,7 +125,7 @@ class SpareList(CustomBaseClass):
         except Exception as e:
             return self.internal_server_error(request, e)
 
-    def post(self, request, brand_model_id):
+    def post(self, request, store_id, brand_model_id):
         """
         Create a spare
         :param request:
@@ -137,6 +137,7 @@ class SpareList(CustomBaseClass):
             "suppliers": "Glass India",
             "quality_class": "FIRST"
         }
+        :param store_id:
         :param brand_model_id:
         :return:
         """
@@ -146,6 +147,7 @@ class SpareList(CustomBaseClass):
             if not brand_model:
                 return self.object_not_found(request)
             data['brand'] = brand_model.brand.id
+            data['store'] = store_id
             data['brand_model'] = brand_model_id
             serializer = serializers.AddSpareSerializer(data=request.data)
             if serializer.is_valid():
