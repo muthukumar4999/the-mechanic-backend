@@ -196,7 +196,7 @@ class AppUtils(object):
 
 
 def upload(request):
-    return render(request, 'upload.html')
+    return render(request, 'spare_invoice.html')
 
 
 

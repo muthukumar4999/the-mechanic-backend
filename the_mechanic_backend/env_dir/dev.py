@@ -15,8 +15,8 @@ except ModuleNotFoundError:
                              'NAME': 'themechanic',
                              'HOST': 'localhost',
                              'PORT': 5432,
-                             'USER': 'dev',
-                             'PASSWORD': 'dev',
+                             'USER': 'muthukumar',
+                             'PASSWORD': 'muthukumar',
                              'ATOMIC_REQUESTS': True,
                              }
                  }

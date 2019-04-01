@@ -77,6 +77,7 @@ class SpareSoldSerializer(serializers.ModelSerializer):
 class SpareOrderHistorySerializer(serializers.ModelSerializer):
     total_spare = serializers.SerializerMethodField()
     spares_detail = serializers.SerializerMethodField()
+    customer_info = serializers.SerializerMethodField()
 
     def get_total_spare(self, obj):
         return SpareSold.objects.filter(order=obj.id).count()
@@ -85,9 +86,11 @@ class SpareOrderHistorySerializer(serializers.ModelSerializer):
         spares = SpareSold.objects.filter(order=obj.id)
         return SpareSoldSerializer(spares, many=True).data
 
+    def get_customer_info(self, obj):
+        return SpareCustomerSerializer(obj.customer).data
     class Meta:
         model = SpareOrder
-        fields = ('order_id', 'order_date', 'total', 'total_spare', "spares_detail")
+        fields = ('order_id', 'order_date', 'total', 'total_spare', 'spares_detail', 'order_type' )
 
 
 #

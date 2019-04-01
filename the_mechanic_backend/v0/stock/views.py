@@ -293,7 +293,6 @@ class SpareOrderList(CustomBaseClass):
         """
         try:
             data = request.data
-
             try:
                 customer = SpareCustomer.objects.get(phone_number=data['customer_info']['phone_number'])
             except SpareCustomer.DoesNotExist:
@@ -310,9 +309,10 @@ class SpareOrderList(CustomBaseClass):
 
             order_id = 'SPOR{}{:05d}'.format(today.strftime("%Y%m"), today_order_count + 1)
             with transaction.atomic():
-                print(self.get_object(Store, store_id))
+                store = self.get_object(Store, store_id)
+                share_message = f"You're successfully purchased following items from {store.name}, {store.branch}.\n"
                 order = SpareOrder(order_id=order_id,
-                                   store=self.get_object(Store, store_id),
+                                   store=store,
                                    order_type=data['order_type'],
                                    customer=customer,
                                    total=0.0,
@@ -332,46 +332,61 @@ class SpareOrderList(CustomBaseClass):
                                            spare=spare,
                                            spare_count=_spare['spare_count'],
                                            spare_name=spare.spare_name,
+                                           spare_buying_price=spare.buying_price,
                                            spare_price=price_map[_spare['spare_price_type']],
                                            spare_price_type=_spare['spare_price_type'])
                     spares_to_be_created.append(sold_spare)
-                    total = total + float(sold_spare.spare_count * sold_spare.spare_price)
+                    current_total = float(sold_spare.spare_count * sold_spare.spare_price)
+                    total = total + current_total
                     spare.quantity = spare.quantity - sold_spare.spare_count
                     spare.save()
+                    share_message += f"{sold_spare.spare_name} -- {sold_spare.spare_count} x {sold_spare.spare_price} = {current_total}\n"
+
                 SpareSold.objects.bulk_create(spares_to_be_created)
                 order.total = total
                 order.save()
-                return Utils.dispatch_success(request, {'order_id': order.id})
+                share_message += f"Grand total = {total}.\n\n" \
+                    f"Order ID: {order_id}\n\n" \
+                    f"Date: {today.strftime('%d-%m-%Y')}\n\nThank you for purchasing with us!"
+                return Utils.dispatch_success(request, {'order_id': order.id, 'share_info': share_message})
         except Exception as e:
             return self.internal_server_error(request, e)
 
 
-class SparesAccounts(CustomBaseClass):
+class SparesAccountingView(CustomBaseClass):
+    sell_report_type = ['IN_SELL', 'OUT_SELL', 'TOTAL_SELL']
+    profit_report_type = ['IN_PROFIT', 'OUT_PROFIT', 'TOTAL_PROFIT']
+    IN_SOURCE = ['IN_SELL', 'IN_PROFIT']
+    OUT_SOURCE = ['OUT_SELL', 'OUT_PROFIT']
+
     def get_total(self, qs, report_type):
-        if report_type == 'IN_SELL':
-            pass
-        elif report_type == 'OUT_SELL':
-            pass
-        elif report_type == 'TOTAL_SELL':
-            pass
-        elif report_type == 'IN_PROFIT':
-            pass
-        elif report_type == 'OUT_PROFIT':
-            pass
-        elif report_type == 'TOTAL_PROFIT':
-            pass
-        else:
-            return 0
+        total = 0.00
+        total_items = 0
+        spares = []
+
+        if report_type in self.IN_SOURCE:
+            qs = qs.filter(order_type=SpareOrder.IN_SOURCE)
+
+        if report_type in self.OUT_SOURCE:
+            qs = qs.filter(order_type=SpareOrder.OUT_SOURCE)
+
+        for order in qs:
+            for spare in SpareSold.objects.filter(order=order):
+                if report_type in self.sell_report_type:
+                    total = total + float(spare.spare_count * spare.spare_price)
+
+                if report_type in self.profit_report_type:
+                    total = total + float(spare.spare_count * spare.spare_buying_price)
+                spares.append(spare.spare)
+                total_items += spare.spare_count
+        return total, total_items, len(set(spares))
 
     def get(self, request):
         try:
-            stores = request.GET.get('stores').split(',')
+            stores = [int(x) for x in request.GET.get('stores', '').split(',')]
             start_date = request.GET.get('start_date')
             end_date = request.GET.get('end_date')
             report_type = request.GET.get('report_type')
-
-            sell_report_type = ['IN_SELL', 'OUT_SELL', 'TOTAL_SELL']
-            profit_report_type = ['IN_PROFIT', 'OUT_PROFIT', 'TOTAL_PROFIT']
 
             profit_map = {
                 "IN_PROFIT": "IN_SELL",
@@ -379,21 +394,37 @@ class SparesAccounts(CustomBaseClass):
                 "TOTAL_PROFIT": "TOTAL_SELL",
             }
 
-            qs = SpareOrder.objects.filter(store__id__in=stores, order_date=[start_date, end_date])
+            qs = self.get_filter_objects(SpareOrder, store__in=stores, order_date__range=[start_date, end_date])
 
-            if report_type in sell_report_type:
-                return Utils.dispatch_success(request, {"sell_total": self.get_total(qs, report_type)})
-
-            if report_type in profit_report_type:
-                sell_price = self.get_total(qs, report_type)
-                response_data = {"sell_total": sell_price}
+            if not qs:
+                return Utils.dispatch_success(request, "DATA_NOT_FOUND")
+            if report_type in self.sell_report_type:
+                selling_total, total_items, total_spares = self.get_total(qs, report_type)
+                response_data = {"selling_total": selling_total,
+                                 "total_items": total_items,
+                                 "total_spares": total_spares}
                 return Utils.dispatch_success(request, response_data)
 
+            if report_type in self.profit_report_type:
+                buying_total, total_items, total_spares = self.get_total(qs, report_type)
+                selling_total, total_items, total_spares = self.get_total(qs, profit_map[report_type])
+                difference = selling_total - buying_total
+                response_data = {"selling_total": selling_total,
+                                 "buying_total": buying_total,
+                                 "profit_total": abs(difference),
+                                 "status": "LOSS" if difference < 0 else "PROFIT",
+                                 "total_items": total_items,
+                                 "total_spares": total_spares}
+                return Utils.dispatch_success(request, response_data)
+            return self.object_not_found(request)
+        except Exception as e:
+            return self.internal_server_error(request, e)
 
 
-
-
-
+class SpareOrderEmailPdf(CustomBaseClass):
+    def get(self, request, order_id, *args, **kwargs):
+        try:
+            order = self.get_object(SpareOrder, order_id)
 
         except Exception as e:
             return self.internal_server_error(request, e)

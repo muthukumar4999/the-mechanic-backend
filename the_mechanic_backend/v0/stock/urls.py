@@ -14,6 +14,8 @@ urlpatterns = [
 
     path('<int:store_id>/spare/order/', views.SpareOrderList.as_view(), name='spare-order-list'),
 
+    path('spare/accounting/', views.SparesAccountingView.as_view(), name='spare-order-list'),
+
     # path('users/', views.UserList.as_view(), name='user-list'),
     #
     # path('login/', views.LoginView.as_view(), name='login'),
