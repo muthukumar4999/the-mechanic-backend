@@ -88,9 +88,11 @@ class SpareOrderHistorySerializer(serializers.ModelSerializer):
 
     def get_customer_info(self, obj):
         return SpareCustomerSerializer(obj.customer).data
+
+
     class Meta:
         model = SpareOrder
-        fields = ('order_id', 'order_date', 'total', 'total_spare', 'spares_detail', 'order_type' )
+        fields = ('order_id', 'order_date', 'total', 'total_spare', 'spares_detail', 'order_type' , 'customer_info')
 
 
 #
