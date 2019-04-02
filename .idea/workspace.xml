@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="779d07b3-d93c-4f20-83bc-2b69978fb399" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/env_dir/dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/env_dir/dev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/templates/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/the_mechanic_backend/templates/spare_invoice.html" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/templates/spare_invoice.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="252" column="54" lean-forward="true" selection-start-line="252" selection-start-column="54" selection-end-line="252" selection-end-column="54" />
+            <state relative-caret-position="132">
+              <caret line="246" column="62" selection-start-line="246" selection-start-column="62" selection-end-line="246" selection-end-column="62" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -395,12 +392,12 @@
       <workItem from="1552726843270" duration="8000" />
       <workItem from="1552739694052" duration="41586000" />
       <workItem from="1554109350848" duration="13586000" />
-      <workItem from="1554176035484" duration="3808000" />
+      <workItem from="1554176035484" duration="4453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131045000" />
+    <option name="totallyTimeSpent" value="131690000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="25" width="1301" height="743" extended-state="6" />
@@ -842,8 +839,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/the_mechanic_backend/v0/stock/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="252" column="54" lean-forward="true" selection-start-line="252" selection-start-column="54" selection-end-line="252" selection-end-column="54" />
+        <state relative-caret-position="132">
+          <caret line="246" column="62" selection-start-line="246" selection-start-column="62" selection-end-line="246" selection-end-column="62" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
