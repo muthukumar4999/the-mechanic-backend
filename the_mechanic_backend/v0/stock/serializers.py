@@ -53,7 +53,7 @@ class SpareSerializer(serializers.ModelSerializer):
             'id', 'brand_name', 'full_vehicle_name', 'model_name', 'spare_name', 'spare_local_name', 'spare_id',
             'quantity',
             'buying_price', 'wholesaler_price', 'mechanic_price', 'customer_price', 'mrp_price', 'suppliers',
-            'quality_class',)
+            'quality_class','is_urgent_spare')
 
 
 class AddSpareSerializer(serializers.ModelSerializer):

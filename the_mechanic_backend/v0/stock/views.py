@@ -245,7 +245,6 @@ class SpareOrderList(CustomBaseClass):
             search = request.GET.get('search', None)
             if search:
                 qs = SpareOrder.objects.filter(store=store_id, order_id__icontains=search)
-                print(qs)
             else:
                 qs = SpareOrder.objects.filter(store=store_id, order_date__range=[start_date, end_date])
 
@@ -429,6 +428,54 @@ class SparesAccountingView(CustomBaseClass):
                                  "total_spares": total_spares}
                 return Utils.dispatch_success(request, response_data)
             return self.object_not_found(request)
+        except Exception as e:
+            return self.internal_server_error(request, e)
+
+
+class UrgentSpareList(CustomBaseClass):
+    def get(self, request, store_id, *args, **kwargs):
+        """
+        return list of urgent stock with pagination
+        :param request:
+        :param store_id:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        try:
+            qs = self.get_filter_objects(Spare, store=store_id, is_urgent_spare=True)
+            page = request.GET.get('page', 1)
+            paginator = Paginator(qs, per_page=10)
+            serializer = serializers.SpareSerializer(paginator.page(page), many=True)
+            response_data = {
+                "data": serializer.data,
+                "page": int(page),
+                "total_pages": paginator.num_pages
+            }
+            return Utils.dispatch_success(request, response_data)
+        except Exception as e:
+            return self.internal_server_error(request, e)
+
+    def put(self, request, store_id, *args, **kwargs):
+        """
+        Updates list of urgent stock with pagination
+        :param request:
+        {
+        "spares":[1, 23, 3425]
+        }
+        :param store_id:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        try:
+            spares_list = request.data["spares"]
+            for _spare in spares_list:
+                spare = self.get_object(Spare, _spare)
+                spare.is_urgent_spare=False
+                spare.save()
+
+            return Utils.dispatch_success(request, 'SUCCESS')
         except Exception as e:
             return self.internal_server_error(request, e)
 

@@ -39,6 +39,7 @@ class Spare(models.Model):
     mrp_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     suppliers = models.CharField(max_length=200)
     quality_class = models.CharField(max_length=100)
+    is_urgent_spare = models.BooleanField(default=False)
 
     def __str__(self):
         return self.spare_name
@@ -55,6 +56,7 @@ class SpareCustomer(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class SpareOrder(models.Model):
     IN_SOURCE = 'IN_SOURCE'
@@ -89,4 +91,3 @@ class SpareSold(models.Model):
     spare_buying_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     spare_price = models.DecimalField(max_digits=10, decimal_places=2)
     spare_price_type = models.CharField(max_length=20, choices=price_type)
-
