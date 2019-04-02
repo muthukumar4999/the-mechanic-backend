@@ -242,7 +242,12 @@ class SpareOrderList(CustomBaseClass):
             start_date = request.GET.get('start_date')
             end_date = request.GET.get('end_date')
             page = request.GET.get('page', 1)
-            qs = SpareOrder.objects.filter(store=store_id, order_date__range=[start_date, end_date])
+            search = request.GET.get('search', None)
+            if search:
+                qs = SpareOrder.objects.filter(store=store_id, order_date__range=[start_date, end_date],
+                                               order_id__icontains=search)
+            else:
+                qs = SpareOrder.objects.filter(store=store_id, order_date__range=[start_date, end_date])
 
             paginator = Paginator(qs, per_page=10)
             serializer = serializers.SpareOrderHistorySerializer(paginator.page(page), many=True)
@@ -449,6 +454,9 @@ class SpareOrderEmailPdf(CustomBaseClass):
                 'pdf_template': 'spare_invoice.html',
                 'filename': 'Invoice'
             }
+
+            order = self.get_object(SpareOrder, order_id)
+            data = {}
             return response.get('pdf')(**dynamic_data)
         except Exception as e:
             return self.internal_server_error(request, e)
