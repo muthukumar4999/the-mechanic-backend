@@ -245,6 +245,7 @@ class SpareOrderList(CustomBaseClass):
             search = request.GET.get('search', None)
             if search:
                 qs = SpareOrder.objects.filter(store=store_id, order_id__icontains=search)
+                print(qs)
             else:
                 qs = SpareOrder.objects.filter(store=store_id, order_date__range=[start_date, end_date])
 
