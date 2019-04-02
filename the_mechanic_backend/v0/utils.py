@@ -148,12 +148,10 @@ class Utils(object):
         return response
 
     @staticmethod
-    def generate_pdf(filename=None, report_type=None, columns=None, data=None, extension='xls', **kwargs):
+    def generate_pdf(filename=None, data=None, **kwargs):
         template = get_template(kwargs['pdf_template'])
         html = template.render(
-            {'data': data, 'logo': settings.LOGO_LINK, 'columns': columns, 'from_date': kwargs['from_date'],
-             'to_date': kwargs['to_date'],
-             'today': kwargs['today'], 'report_type': report_type})
+            {'data': data})
         result = BytesIO()
         pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
         if not pdf.err:
@@ -163,7 +161,7 @@ class Utils(object):
 
         if pdf:
             response = HttpResponse(response_pdf, content_type='application/pdf')
-            content = "attachment; filename={}.{}".format(filename, extension)
+            content = "attachment; filename={}.{}".format(filename, 'pdf')
             response['Content-Disposition'] = content
             return response
 

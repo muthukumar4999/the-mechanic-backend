@@ -14,6 +14,8 @@ urlpatterns = [
 
     path('<int:store_id>/spare/order/', views.SpareOrderList.as_view(), name='spare-order-list'),
 
+    path('spare/order/<order_id>/email/', views.SpareOrderEmailPdf.as_view(), name='spare-order-email'),
+
     path('spare/accounting/', views.SparesAccountingView.as_view(), name='spare-order-list'),
 
     # path('users/', views.UserList.as_view(), name='user-list'),

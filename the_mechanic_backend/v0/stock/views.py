@@ -423,8 +423,25 @@ class SparesAccountingView(CustomBaseClass):
 
 class SpareOrderEmailPdf(CustomBaseClass):
     def get(self, request, order_id, *args, **kwargs):
+        """
+        Returns PDF of the invoice or email's user
+        :param request:
+        :param order_id:
+        :param args:
+        :param kwargs:
+        :return:
+        """
         try:
             order = self.get_object(SpareOrder, order_id)
-
+            response = {
+                'csv': Utils.generate_csv,
+                'xls': Utils.generate_xls,
+                'pdf': Utils.generate_pdf
+            }
+            dynamic_data = {
+                'pdf_template': 'spare_invoice.html',
+                'filename': 'Invoice'
+            }
+            return response.get('pdf')(**dynamic_data)
         except Exception as e:
             return self.internal_server_error(request, e)
