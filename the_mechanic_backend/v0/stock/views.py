@@ -360,6 +360,13 @@ class SparesAccountingView(CustomBaseClass):
     OUT_SOURCE = ['OUT_SELL', 'OUT_PROFIT']
 
     def get_total(self, qs, report_type):
+        """
+        parms ?start_date=2019-01-31&&end_date=2019-12-31&&stores=16&&report_type=TOTAL_SELL
+        IN_SELL', 'OUT_SELL', 'TOTAL_SELL', 'IN_PROFIT', 'OUT_PROFIT', 'TOTAL_PROFIT
+        :param qs:
+        :param report_type:
+        :return:
+        """
         total = 0.00
         total_items = 0
         spares = []
