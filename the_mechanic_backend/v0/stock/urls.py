@@ -10,7 +10,7 @@ urlpatterns = [
 
     path('<int:store_id>/model/<int:brand_model_id>/spare/', views.SpareList.as_view(), name='model-spare-list'),
 
-    path('spare/search/', views.SpareSearchList.as_view(), name='global-spare-search'),
+    path('spare/<int:store_id>/search/', views.SpareSearchList.as_view(), name='global-spare-search'),
 
     path('spare/<int:spare_id>/', views.SpareDetails.as_view(), name='model-spare-details'),
 
