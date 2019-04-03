@@ -271,6 +271,9 @@ class SpareOrderList(CustomBaseClass):
                     "address": "ADDRESSS"
                 },
                 "order_type": "IN_SOURCE / OUT_SOURCE",
+                "bike_number": "TN41Y5644",
+                "labour_charge": 0.00,
+                "out_source_charge": 0.00,
                 "spares": [
                     {
                         "spare_id": 1,
@@ -347,6 +350,13 @@ class SpareOrderList(CustomBaseClass):
                     share_message += f"{sold_spare.spare_name} -- {sold_spare.spare_count} x {sold_spare.spare_price} = {current_total}\n"
 
                 SpareSold.objects.bulk_create(spares_to_be_created)
+                if order.order_type:
+                    order.bike_number = data['bike_number']
+                    order.labour_charge = data['labour_charge']
+                    order.out_source_charge = data['out_source_charge']
+                    total = total + order.labour_charge + order.out_source_charge
+                    share_message += f"Labour Charge = {order.labour_charge}\n\n" \
+                        f"Out Source Charge = {order.out_source_charge}\n\n"
                 order.total = total
                 order.save()
                 share_message += f"Grand total = {total}.\n\n" \
@@ -516,6 +526,12 @@ class SpareOrderEmailPdf(CustomBaseClass):
             data['order_id'] = order.order_id
             data['date'] = order.order_date.strftime('%d-%m-%Y %H:%M:%S')
             data['total'] = order.total
+            data['type'] = order.order_type
+            data['bike_number'] = order.bike_number
+            data['labour_charge'] = order.labour_charge
+            data['out_source_charge'] = order.out_source_charge
+            data['sold_by'] = order.sold_by.first_name
+            data['sub_total'] = order.total - order.labour_charge - order.out_source_charge
             response = {
                 'csv': Utils.generate_csv,
                 'xls': Utils.generate_xls,

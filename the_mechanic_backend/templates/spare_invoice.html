@@ -127,30 +127,35 @@
 
 <table>
     <tr>
-        <td width="20%">
+        <td width="22%">
             <div class="customer-address">
                 <span class="invoice-heading">BILLED TO</span><br><br>
                 <span class="customer-details">
-                    {{ customer.name }}<br>
-                    {{ customer.phone_number }} <br>{{ customer.email }} <br><br>
+                    {{ customer.name }}<br><br>
+                    {{ customer.phone_number }}<br> <br>{{ customer.email }} <br><br>
                     {{ customer.address }}<br>
                 </span>
             </div>
-            <br><br><br>
+            <br>
 
             <div class="invoice-main-heading">
                 <span> INVOICE </span><br>
                 <span class="invoice-heading" style="font-size:10px">INVOICE NO</span><br>
                 <span class="customer-details" style="margin-top:-8px">{{ order_id }}</span><br>
-                <span class="invoice-heading" style="font-size:10px">INVOICE DATE & TIME</span><br>
+                <span class="invoice-heading" style="font-size:10px">INVOICE DATETIME</span><br>
                 <span class="customer-details" style="margin-top:-8px">{{ date }}</span><br>
+                {% if type == 'IN_SOURCE' %}
+                <span class="invoice-heading" style="font-size:10px">BIKE NUMBER</span><br>
+                <span class="customer-details" style="margin-top:-8px">{{ bike_number }}</span><br>
+                {% endif %}
+                <span class="invoice-heading" style="font-size:10px">SOLD BY</span><br>
+                <span class="customer-details" style="margin-top:-8px">{{ sold_by }}</span><br>
             </div>
         </td>
 
-        <td width="80%">
+        <td width="78%">
 
             <div class="inv">
-                <br><br><br><br><br><br><br><br><br><br><br><br>
                 <table style="font-size:14px;">
                     <tr>
                         <th style="width:5%">#</th>
@@ -168,12 +173,27 @@
                         <td style="width:25%">{{ row.2 }}</td>
                         <td style="width:5%">X</td>
                         <td style="width:10%">{{ row.3 }}</td>
-                        <td style="width:20%">{{ row.4 }}</td>
+                        <td style="width:20%;text-align: right;">{{ row.4 }}</td>
                     </tr>
                     {% endfor %}
+                    {% if type == 'IN_SOURCE' %}
                     <tr style="border-top: #333 1px dashed">
-                        <td colspan="5" style="text-align: right"><b>Grand Total : </b></td>
-                        <td><b>{{ total }}</b></td>
+                        <td colspan="5" style="text-align: right">Sub Total :</td>
+                        <td style="text-align: right;">{{ sub_total }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: right">Labour Charge :</td>
+                        <td style="text-align: right;">{{ labour_charge }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: right">Out Source Charge :</td>
+                        <td style="text-align: right;">{{ out_source_charge }}</td>
+                    </tr>
+                    {% endif %}
+
+                    <tr style="border-top: #333 1px dashed">
+                        <td colspan="5" style="text-align: right;font-size: 20px"><b>Grand Total : </b></td>
+                        <td style="text-align: right;font-size: 20px"><b>{{ total }}</b></td>
                     </tr>
                 </table>
             </div>

@@ -53,7 +53,7 @@ class SpareSerializer(serializers.ModelSerializer):
             'id', 'brand_name', 'full_vehicle_name', 'model_name', 'spare_name', 'spare_local_name', 'spare_id',
             'quantity',
             'buying_price', 'wholesaler_price', 'mechanic_price', 'customer_price', 'mrp_price', 'suppliers',
-            'quality_class','is_urgent_spare', 'spare_location')
+            'quality_class', 'is_urgent_spare', 'spare_location')
 
 
 class AddSpareSerializer(serializers.ModelSerializer):
@@ -89,10 +89,10 @@ class SpareOrderHistorySerializer(serializers.ModelSerializer):
     def get_customer_info(self, obj):
         return SpareCustomerSerializer(obj.customer).data
 
-
     class Meta:
         model = SpareOrder
-        fields = ('order_id', 'order_date', 'total', 'total_spare', 'spares_detail', 'order_type' , 'customer_info')
+        fields = ('order_id', 'order_date', 'total', 'total_spare', 'spares_detail', 'order_type',
+                  'customer_info', 'out_source_charge', 'bike_number', 'labour_charge')
 
 
 #
