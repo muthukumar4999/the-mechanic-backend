@@ -40,6 +40,7 @@ class Spare(models.Model):
     suppliers = models.CharField(max_length=200)
     quality_class = models.CharField(max_length=100)
     is_urgent_spare = models.BooleanField(default=False)
+    spare_location = models.CharField(max_length=500, default="")
 
     def __str__(self):
         return self.spare_name
