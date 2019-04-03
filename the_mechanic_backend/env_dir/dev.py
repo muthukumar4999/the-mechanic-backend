@@ -26,5 +26,5 @@ else:
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 'ixespresso@gmail.com'
+EMAIL_HOST_PASSWORD = 'Espresso@1'

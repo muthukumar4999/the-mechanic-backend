@@ -129,8 +129,12 @@
     <tr>
         <td width="20%">
             <div class="customer-address">
-                <span class="invoice-heading">BILLED TO</span><br>
-                <span class="customer-details">{{ customer.name }}<br>{{ customer.phone_number }}<br>{{ customer.email }}<br>{{ customer.address }}</span>
+                <span class="invoice-heading">BILLED TO</span><br><br>
+                <span class="customer-details">
+                    {{ customer.name }}<br>
+                    {{ customer.phone_number }} <br>{{ customer.email }} <br><br>
+                    {{ customer.address }}<br>
+                </span>
             </div>
             <br><br><br>
 
@@ -157,32 +161,17 @@
                         <th style="width:20%">TOTAL</th>
 
                     </tr>
-
+                    {% for row in order %}
                     <tr>
-                        <td style="width:5%;">1</td>
-                        <td style="width:35%">Mark</td>
-                        <td style="width:25%">1,000</td>
+                        <td style="width:5%;">{{ row.0 }}</td>
+                        <td style="width:35%">{{ row.1 }}</td>
+                        <td style="width:25%">{{ row.2 }}</td>
                         <td style="width:5%">X</td>
-                        <td style="width:10%">2</td>
-                        <td style="width:20%">2,000</td>
+                        <td style="width:10%">{{ row.3 }}</td>
+                        <td style="width:20%">{{ row.4 }}</td>
                     </tr>
-                    <tr>
-                        <td style="width:5%">2</td>
-                        <td style="width:35%">Mark</td>
-                        <td style="width:25%">10,000</td>
-                        <td style="width:5%">X</td>
-                        <td style="width:10%">20</td>
-                        <td style="width:2%">2,00,000</td>
-                    </tr>
-                    <tr>
-                        <td style="width:5%">13</td>
-                        <td style="width:35%">Mark</td>
-                        <td style="width:25%">100</td>
-                        <td style="width:5%">X</td>
-                        <td style="width:10%">1</td>
-                        <td style="width:20%">200</td>
-                    </tr>
-                    <tr>
+                    {% endfor %}
+                    <tr style="border-top: #333 1px dashed">
                         <td colspan="5" style="text-align: right"><b>Grand Total : </b></td>
                         <td><b>{{ total }}</b></td>
                     </tr>

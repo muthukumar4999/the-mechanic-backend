@@ -7,7 +7,7 @@ from django.db.models import Q
 from the_mechanic_backend.apps.accounts.models import Store
 from the_mechanic_backend.apps.stock.models import Brand, BrandModel, Spare, SpareCustomer, SpareOrder, SpareSold
 from the_mechanic_backend.v0.stock import serializers
-from the_mechanic_backend.v0.utils import Utils, CustomBaseClass
+from the_mechanic_backend.v0.utils import Utils, CustomBaseClass, AppUtils
 
 
 class BrandList(CustomBaseClass):
@@ -472,7 +472,7 @@ class UrgentSpareList(CustomBaseClass):
             spares_list = request.data["spares"]
             for _spare in spares_list:
                 spare = self.get_object(Spare, _spare)
-                spare.is_urgent_spare=False
+                spare.is_urgent_spare = False
                 spare.save()
 
             return Utils.dispatch_success(request, 'SUCCESS')
@@ -485,12 +485,15 @@ class SpareOrderEmailPdf(CustomBaseClass):
         """
         Returns PDF of the invoice or email's user
         :param request:
+        @param action=email # to send email to customer
+        @param action=download # to Download the invoice copy
         :param order_id:
         :param args:
         :param kwargs:
         :return:
         """
         try:
+            action = request.GET.get('action')
             order = self.get_object(SpareOrder, order_id)
             data = {}
             store = order.store
@@ -498,7 +501,7 @@ class SpareOrderEmailPdf(CustomBaseClass):
                 'store_name': store.name.upper(),
                 'store_branch': store.branch.upper(),
                 'store_type': store.branch,
-                'store_address': store.branch,
+                'store_address': store.address.replace(',', '\n'),
                 'store_phone': store.phone,
                 'store_email': store.email,
                 'store_website': store.website,
@@ -506,9 +509,9 @@ class SpareOrderEmailPdf(CustomBaseClass):
             customer = order.customer
             data['customer'] = {
                 'name': customer.name,
-                'email' : customer.email,
+                'email': customer.email,
                 'phone_number': customer.phone_number,
-                'address': customer.address
+                'address': customer.address.replace(',', '\n')
             }
             data['order_id'] = order.order_id
             data['date'] = order.order_date.strftime('%d-%m-%Y %H:%M:%S')
@@ -518,12 +521,23 @@ class SpareOrderEmailPdf(CustomBaseClass):
                 'xls': Utils.generate_xls,
                 'pdf': Utils.generate_pdf
             }
+            data['order'] = []
+            for i, order_spare in enumerate(SpareSold.objects.filter(order=order)):
+                data['order'].append([i + 1, order_spare.spare_name, order_spare.spare_price, order_spare.spare_count,
+                                      order_spare.spare_price * order_spare.spare_count])
             dynamic_data = {
                 'pdf_template': 'spare_invoice.html',
                 'filename': f'Invoice_{order.order_id}',
-                'data': data
+                'data': data,
+                'action': action
             }
 
-            return response.get('pdf')(**dynamic_data)
+            if action == 'download':
+                return response.get('pdf')(**dynamic_data)
+            elif action == 'email':
+                if customer.email:
+                    AppUtils.send_inovice_email(response.get('pdf')(**dynamic_data), data, f'Invoice_{order.order_id}' )
+                    return Utils.dispatch_success(request, 'SUCCESS')
+            return self.object_not_found(request)
         except Exception as e:
             return self.internal_server_error(request, e)

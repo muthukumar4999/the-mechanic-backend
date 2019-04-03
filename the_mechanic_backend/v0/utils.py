@@ -151,7 +151,7 @@ class Utils(object):
     def generate_pdf(filename=None, data=None, **kwargs):
         template = get_template(kwargs['pdf_template'])
         html = template.render(
-            {'data': data})
+            data)
         result = BytesIO()
         pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
         if not pdf.err:
@@ -160,6 +160,8 @@ class Utils(object):
             response_pdf = None
 
         if pdf:
+            if kwargs['action'] == 'email':
+                return result.getvalue()
             response = HttpResponse(response_pdf, content_type='application/pdf')
             content = "attachment; filename={}.{}".format(filename, 'pdf')
             response['Content-Disposition'] = content
@@ -192,9 +194,18 @@ class AppUtils(object):
     def get_vehicle_full_name(self, vehicle):
         return f'{vehicle.vehicle_brand.name} {vehicle.vehicle_model.model_name}'
 
+    @staticmethod
+    def send_inovice_email(pdf, data , filename):
+        from django.core.mail import EmailMessage
+
+        email = EmailMessage(
+            f'Invoice for #{data["order_id"]} from {data["store"]["store_name"]}',
+            f'Hi {data["customer"]["name"]},\n\t\tThanks for Purchasing with us.'
+            f' Please find the attached PDF file for invoice copy.',
+            settings.EMAIL_HOST_USER, [data['customer']['email'],])
+        email.attach(f'{filename}.pdf', pdf , 'application/pdf')
+        email.send()
 
 def upload(request):
     return render(request, 'spare_invoice.html')
-
-
 
