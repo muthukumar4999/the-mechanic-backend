@@ -201,7 +201,8 @@ class AppUtils(object):
         email = EmailMessage(
             f'Invoice for #{data["order_id"]} from {data["store"]["store_name"]}',
             f'Hi {data["customer"]["name"]},\n\t\tThanks for Purchasing with us.'
-            f' Please find the attached PDF file for invoice copy.',
+            f' Please find the attached PDF file for invoice copy.\n\n\n\n'
+            f'Please do not reply to this mail. This is sent from an unattended mail box.',
             settings.EMAIL_HOST_USER, [data['customer']['email'],])
         email.attach(f'{filename}.pdf', pdf , 'application/pdf')
         email.send()

@@ -36,7 +36,7 @@ class LoginView(CustomBaseClass):
                 response_data['store_info'] = serializers.StoreSerializer(user.store).data
             return Utils.dispatch_success(request, response_data)
         else:
-            return Utils.dispatch_failure(request, "UNAUTHORIZED_ACCESS", validate_user.errors)
+            return Utils.dispatch_failure(request, "INVALID_CREDENTIALS", validate_user.errors)
 
 
 class XlsFileUpload(CustomBaseClass):
