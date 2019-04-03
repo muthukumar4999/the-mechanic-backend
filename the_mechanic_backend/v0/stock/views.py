@@ -223,6 +223,35 @@ class SpareDetails(CustomBaseClass):
         except Exception as e:
             return self.internal_server_error(request, e)
 
+class SpareSearchList(CustomBaseClass):
+    def get(self, request, store_id):
+        """
+        return a list of spares for all models
+        :param request:
+        @query_param
+        search=search_text - to search the spares
+        out_of_stock=true - to get only out of stock
+        Note - we can use both at same time :)
+        :param store_id
+        :param brand_model_id:
+        :return:
+        """
+        try:
+            search = request.GET.get('search')
+            out_of_stock = request.GET.get('out_of_stock')
+            spare = self.get_filter_objects(Spare, store=store_id)
+
+            if search:
+                spare = spare.filter(Q(spare_id__icontains=search) | Q(spare_name__icontains=search))
+
+            if out_of_stock:
+                spare = spare.filter(quantity=0)
+
+            serializer = serializers.SpareSerializer(spare, many=True)
+            return Utils.dispatch_success(request, serializer.data)
+        except Exception as e:
+            return self.internal_server_error(request, e)
+
 
 class SpareOrderList(CustomBaseClass):
     def get(self, request, store_id, *args, **kwargs):
