@@ -72,6 +72,9 @@ class StoreList(CustomBaseClass):
            "branch": "Palavakkam",
            "type": "SPARE", # SERVICE / SPARE
            "address": "Palavakkam",
+           "phone": "9715424547",
+           "email": "test@grr.la",
+           "website": "www.html.com",
        }
         :return:
         """

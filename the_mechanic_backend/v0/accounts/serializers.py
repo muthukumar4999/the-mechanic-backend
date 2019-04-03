@@ -39,7 +39,7 @@ class AuthUserSerializer(serializers.ModelSerializer):
 class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store
-        fields = ('id', 'name', 'branch', 'type', 'address')
+        fields = ('id', 'name', 'branch', 'type', 'address', 'phone', 'email', 'website')
 
 
 class CreateUserSerializer(serializers.ModelSerializer):

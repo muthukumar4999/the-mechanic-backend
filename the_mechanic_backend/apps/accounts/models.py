@@ -11,6 +11,9 @@ class Store(models.Model):
     branch = models.CharField(max_length=200)
     type = models.CharField(max_length=200, choices=STORE_TYPE)
     address = models.TextField()
+    phone = models.CharField(max_length=200, default="")
+    email = models.CharField(max_length=200, default="")
+    website = models.CharField(max_length=200, default="")
 
     def __str__(self):
         return f'{self.name} - {self.branch}'

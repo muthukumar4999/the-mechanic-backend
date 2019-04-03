@@ -492,6 +492,27 @@ class SpareOrderEmailPdf(CustomBaseClass):
         """
         try:
             order = self.get_object(SpareOrder, order_id)
+            data = {}
+            store = order.store
+            data['store'] = {
+                'store_name': store.name.upper(),
+                'store_branch': store.branch.upper(),
+                'store_type': store.branch,
+                'store_address': store.branch,
+                'store_phone': store.phone,
+                'store_email': store.email,
+                'store_website': store.website,
+            }
+            customer = order.customer
+            data['customer'] = {
+                'name': customer.name,
+                'email' : customer.email,
+                'phone_number': customer.phone_number,
+                'address': customer.address
+            }
+            data['order_id'] = order.order_id
+            data['date'] = order.order_date.strftime('%d-%m-%Y %H:%M:%S')
+            data['total'] = order.total
             response = {
                 'csv': Utils.generate_csv,
                 'xls': Utils.generate_xls,
@@ -499,11 +520,10 @@ class SpareOrderEmailPdf(CustomBaseClass):
             }
             dynamic_data = {
                 'pdf_template': 'spare_invoice.html',
-                'filename': 'Invoice'
+                'filename': f'Invoice_{order.order_id}',
+                'data': data
             }
 
-            order = self.get_object(SpareOrder, order_id)
-            data = {}
             return response.get('pdf')(**dynamic_data)
         except Exception as e:
             return self.internal_server_error(request, e)
