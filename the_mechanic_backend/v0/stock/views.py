@@ -275,6 +275,9 @@ class SpareOrderList(CustomBaseClass):
             if search:
                 qs = SpareOrder.objects.filter(store=store_id, order_id__icontains=search)
             else:
+                if start_date:
+                    start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
+                    end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d') + datetime.timedelta(days=1)
                 qs = SpareOrder.objects.filter(store=store_id, order_date__range=[start_date, end_date])
 
             paginator = Paginator(qs, per_page=10)
@@ -437,7 +440,9 @@ class SparesAccountingView(CustomBaseClass):
             start_date = request.GET.get('start_date')
             end_date = request.GET.get('end_date')
             report_type = request.GET.get('report_type')
-
+            if start_date:
+                start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
+                end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d') + datetime.timedelta(days=1)
             profit_map = {
                 "IN_PROFIT": "IN_SELL",
                 "OUT_PROFIT": "OUT_SELL",
