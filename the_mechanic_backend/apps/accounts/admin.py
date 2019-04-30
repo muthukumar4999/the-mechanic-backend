@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
@@ -36,4 +37,4 @@ class StoreAdmin(admin.ModelAdmin):
 admin.site.register(User, MechanicUserAdmin)
 admin.site.register(Store, StoreAdmin)
 admin.site.register(AuthUser, AuthUserAdmin)
-admin.site.site_url = 'http://the-mechanic-backend.herokuapp.com/api/v0/docs/'
+admin.site.site_url = settings.BACKEND_URL

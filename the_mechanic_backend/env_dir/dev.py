@@ -28,3 +28,4 @@ DATABASES['default'].update(db_from_env)
 
 EMAIL_HOST_USER = 'themechanicbot@gmail.com'
 EMAIL_HOST_PASSWORD = 'TheMechanic123'
+BACKEND_URL = "http://the-mechanic-backend-dev.herokuapp.com/api/v0/docs/"
