@@ -394,7 +394,7 @@ class SpareOrderList(CustomBaseClass):
                 share_message += f"Grand total = {total}.\n\n" \
                     f"Order ID: {order_id}\n\n" \
                     f"Date: {today.strftime('%d-%m-%Y')}\n\nThank you for purchasing with us!"
-                return Utils.dispatch_success(request, {'order_id': order.id, 'share_info': share_message})
+                return Utils.dispatch_success(request, {'order_id': order.id, 'spareorder_id':order_id, 'share_info': share_message})
         except Exception as e:
             return self.internal_server_error(request, e)
 
