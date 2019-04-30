@@ -505,7 +505,7 @@ class UrgentSpareList(CustomBaseClass):
         Updates list of urgent stock with pagination
         :param request:
         {
-        "spares":[1, 23, 3425]
+        "spares":[{"id":23, "quantity": 20}, {"id":30, "quantity": 2}, {"id":11, "quantity": 12}, ]
         }
         :param store_id:
         :param args:
@@ -515,10 +515,10 @@ class UrgentSpareList(CustomBaseClass):
         try:
             spares_list = request.data["spares"]
             for _spare in spares_list:
-                spare = self.get_object(Spare, _spare)
+                spare = self.get_object(Spare, _spare["id"])
                 spare.is_urgent_spare = False
+                spare.quantity += _spare["quantity"]
                 spare.save()
-
             return Utils.dispatch_success(request, 'SUCCESS')
         except Exception as e:
             return self.internal_server_error(request, e)

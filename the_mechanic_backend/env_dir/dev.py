@@ -15,8 +15,8 @@ except ModuleNotFoundError:
                              'NAME': 'themechanic',
                              'HOST': 'localhost',
                              'PORT': 5432,
-                             'USER': 'dev',
-                             'PASSWORD': 'dev',
+                             'USER': 'muthukumar',
+                             'PASSWORD': 'muthukumar',
                              'ATOMIC_REQUESTS': True,
                              }
                  }
@@ -26,5 +26,5 @@ else:
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-EMAIL_HOST_USER = 'ixespresso@gmail.com'
-EMAIL_HOST_PASSWORD = 'Espresso@1'
+EMAIL_HOST_USER = 'themechanicbot@gmail.com'
+EMAIL_HOST_PASSWORD = 'TheMechanic123'
